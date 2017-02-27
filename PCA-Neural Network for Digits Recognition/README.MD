@@ -6,5 +6,5 @@
      * input layer: 48 units, because the PCA returns 48 dimension
      * hidden layer: 20 unites, I just select a tolerable number for my laptop to do the computation
      * output layer: 10 unites, because there are 10 digit for recognition
-     * I write a cost function with gradient descent, optimize it using scipy.optimize.fmin_l_bfgs_b, then get the trained parameter Theta.
+     * write a cost function with gradient descent, optimize it using scipy.optimize.fmin_l_bfgs_b, then get the trained parameter Theta.
 5. Predict the label for testing data set using the trained Neural Network, write output to csv file.
