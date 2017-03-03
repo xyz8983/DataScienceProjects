@@ -25,7 +25,7 @@ Import libraries, load data, check  the correlations between each variables.
         sns.heatmap(relationship, vmax=1.0, square = True)
 
 
-(insert the heat map here)
+![heatmap](heatmap_for_correlation.png)
 
 ## Cleaning and filling missing part
 
@@ -56,7 +56,7 @@ Check if there is any missing data
         missing_data = pd.concat([number_missing, percentage_missing], axis = 1, keys=['number','percentage'])
         missing_data
 
-(insert the missing_data table result here)
+![missing_data](missing_data.png)
 
 
 
