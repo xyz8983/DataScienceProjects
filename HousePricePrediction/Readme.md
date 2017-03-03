@@ -54,9 +54,6 @@ Check if there is any missing data
         number_missing = number_missing[number_missing!=0]
         percentage_missing = number_missing/all_data.shape[0]
         missing_data = pd.concat([number_missing, percentage_missing], axis = 1, keys=['number','percentage'])
-        missing_data
-
-![missing_data](missing_data.png)
 
 
 
