@@ -23,6 +23,7 @@ testing = pd.read_csv('./test.csv')
 relationship = training.corr()
 sns.heatmap(relationship, vmax=1.0, square = True)
 '''
+
 (insert the heat map here)
 
 ## Cleaning and filling missing part
