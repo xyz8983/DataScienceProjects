@@ -100,7 +100,7 @@ scale_f_list = ['LotFrontage','LotArea','MasVnrArea',
 for feature in scale_f_list:
     all_data[feature] = preprocessing.scale(all_data[feature])
 
-## train linear regression model and perform prediction
+## Train linear regression model and perform prediction
 
 6. Split the all_data into training set and testing set, then further split 30% of training set into validation set. I am going to use sklearn.linear_model.Ridge. The validation set is used to select the right value for parameter alpha, for regularization to avoid overfitting.
 '''
@@ -127,7 +127,6 @@ linearM = linear_model.Ridge(alphas[idx])
 linearM.fit(training_x, training_y)
 
 predicted_y_test = linearM.predict(testing)
-#since training_label get a log transformation
 predicted_y_test = numpy.expm1(predicted_y_test)
 testing_y = pd.DataFrame(predicted_y_test, columns = ['SalePrice'])
 testing_y.index += 1461
