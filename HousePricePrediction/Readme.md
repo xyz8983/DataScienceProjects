@@ -42,6 +42,7 @@ for f_drop in all_data_f_drop:
     all_data = all_data.drop(f_drop, axis = 1)
 
 '''
+
 Here I concatenate all training dataset and testing dataset, one reason is for better visualizing the data to get more information, the other is to make sure both the training dataset and testing dataset will get the same dimension after dummy transformation.
 
 3. Check if there is any missing data
@@ -122,6 +123,7 @@ print('alpha and smallest error',alphas[idx], min_error)
 '''
 
 7. Predicting the sale price using the testing dataset
+
 '''
 linearM = linear_model.Ridge(alphas[idx])
 linearM.fit(training_x, training_y)
