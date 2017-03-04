@@ -1,4 +1,4 @@
-## Projecct Introduction
+## Project Introduction
 This project is for the Kaggle Competition [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
 using the Ames Housing dataset which contains 79 variables for almost all aspects of the homes in Ames, Iowa, to predict the final house sale price.
 
@@ -7,7 +7,7 @@ using the Ames Housing dataset which contains 79 variables for almost all aspect
 ## Glance at the data
 
 ### Step 1.
-Import libraries, load data, check  the correlations between each variables.
+Import libraries, load data, check the correlations between each variables.
 
 
         import pandas as pd
@@ -58,7 +58,7 @@ Check if there is any missing data
 
 
 ### Step 4. 
-Let's examine the train.csv data file and the data_description.txt which contains full description of each column, it is easily found out that some missing data "NA" does not really mean "missing", instead, they means "None". For example, "NA" in feature "Alley" just mean "No Alley Access". Some features's "NA" means 0 or "Other", while others I use the mean value or the most frequent value of that variale to fill the "NA". The variables "Alley", and "Fence" has over 80% missing value, and variable "FireplaceQu" has almost 50% of missing value. Based on the mean square error later on, deleting these three variables will improve the accuracy, therefore, I drop these three variables too.
+Let's examine the train.csv data file and the data_description.txt which contains full description of each column, it is easily found out that some missing data "NA" does not really mean "missing", instead, they means "None". For example, "NA" in feature "Alley" just mean "No Alley Access". The "NA" of some features means 0 or "Other", while others I use the mean value or the most frequent value of that variable to fill the "NA". The variables "Alley", and "Fence" has over 80% missing value, and variable "FireplaceQu" has almost 50% of missing value. Based on the mean square error later on, deleting these three variables will improve the accuracy, therefore, I drop these three variables too.
 
 
         all_data_f_drop = ['Alley', 'Fence', 'FireplaceQu']
@@ -85,7 +85,7 @@ Let's examine the train.csv data file and the data_description.txt which contain
 
 
 ### Step 5. 
-Log transform some skewed numeric variables, dummpy tranform the category data, Then normalize some variables which contains large range to have 0 mean and 1 std. These steps are to help the linear regression model get a better performance.
+Log transform some skewed numeric variables, dummy transform the category data, Then normalize some variables which contains large range to have 0 mean and 1 std. These steps are to help the linear regression model get a better performance.
 
         numeric_var = all_data.dtypes[all_data.dtypes != "object"].index
         skewed_var = training[numeric_var].apply(lambda x: skew(x.dropna())) #compute skewness
