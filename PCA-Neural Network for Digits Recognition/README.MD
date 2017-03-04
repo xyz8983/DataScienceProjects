@@ -58,7 +58,7 @@ After PCA, the column number is reduced to 48. In this way I only have 48 units 
 ### Step3. Design a Neural Network layout
 Here I use a simple Neural Network with only one hidden layer. The structure is like this:
 
-![Neutral Network Layout](NeuralNetworkStructure.jpg)
+![Neutral Network Layout](NeuralNetwork_Structure.jpg)
 
 Each picture has totally 784 pixels, which is also the column number in the data files. After PCA (Principle Component Analysis), the dimension is reduced to 48. Therefore the input layer has 48 units. I designed 20 units in the hidden layer. The more unites in the hidden layer or the more hidden layer, the better for the algorithm performance, but also the more computational expensive. Since there are 0-9 totally 10 different digits for recognition, the output layer has 10 units.
 I will use feedforward propagation with logistic activation function for Neural Network to perform the prediction, and the backpropagation to train the Neural Network. Since the math formula does not look good in markdown file, I am not going to list them. 
