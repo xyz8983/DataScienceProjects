@@ -3,7 +3,7 @@ I finished the Machine Learning course taught by Professor Andrew Ng on Coursera
 
 In general, I designed a simple Neural Network with one input layer, one hidden layer, and one output layer, with Sigmoid function as the activation function. I defined a cost function with gradient descent in feedforward propagation and backpropagation algorithm. Then I select advanced optimization function from scipy.optimize.fmin_l_bfgs_b to help me minimize the cost function in order to train the Neural Network. This optimization procedures return the parameters Theta, which can be applied in final prediction.
 
-I know there are many advanced libaries now like TensorFlow, Keras, etc. that will make training Neural Network less painful. My goal here is to write down and practice what I have learned in the Machine Learning class, and understand what is the mathematical procedures behind the scene.
+I know there are many advanced libraries now like TensorFlow, Keras, etc. that will make training Neural Network less painful. My goal here is to write down and practice what I have learned in the Machine Learning class, and understand what is the mathematical procedures behind the scene.
 
 ## Glance at the data
 
@@ -39,7 +39,7 @@ The example picture looks like this:
 
 ### step 2. Normalize Data
 
-I normalize the data in order to perform PCA to reduce the data dimention, since I will use the column number of the data file as the input layer units. The original column number is 784+1, meaning there would be 784 units on input layer. I have tried using all column as input units. But it just easiy strike my laptop when I run the program. Therefore I decided to use PCA to speed things up and reduce the usage of memory, also save my poor laptop.
+I normalize the data in order to perform PCA to reduce the data dimension, since I will use the column number of the data file as the input layer units. The original column number is 784+1, meaning there would be 784 units on input layer. I have tried using all column as input units. But it just easily strike my laptop when I run the program. Therefore I decided to use PCA to speed things up and reduce the usage of memory, also save my poor laptop.
 
     training_x = training.drop(['label'],axis='columns').values
     training_y = training['label'].values 
@@ -143,7 +143,7 @@ This function calculates the cost function for Neural Network.
     Output: a tuple with J, a float number for the cost of the neural network model, and grad, a vector for gradient
 
 
-3. The randomly initialization function: randomly initializing the parameter thetas for symmetric breaking. If using 0 as the initial parameter thetas, the units in hidden layer would behave exactly the same. Since this neural network just has three layers, it only needs two params:
+3. The randomly initialization function: randomly initializing the parameter thetas for symmetric breaking. If using 0 as the initial parameter thetas, the units in hidden layer would behave exactly the same. Since this neural network just has three layers, it only needs two parameters:
     Input: 
         L_in: integer, number of incoming connections
         L_out: integer, number of outgoing connections
@@ -157,7 +157,7 @@ This function calculates the cost function for Neural Network.
         return w
     ```
 
-4. The prediction function: predictin the label of the input X given a trained neural network represented by paramenter thetas
+4. The prediction function: predicting the label of the input X given a trained neural network represented by parameter thetas
 
     ```
     def predict(Theta1, Theta2, X):
@@ -174,7 +174,7 @@ This function calculates the cost function for Neural Network.
     ```
 
 ### Step 5. Train Neural Network
-After designed the Neural Network structure and the helper functions, let's continue the predicton process. I initialize the Thetas as starting points, then select an advanced optimization function from scipy.optimize.fmin_l_bfgs_b to help me minimize the cost function in order to train the Neural Network. This optimization procedures return the parameters Theta1 and Theta2, which can be applied in final prediction.
+After designed the Neural Network structure and the helper functions, let's continue the prediction process. I initialize the Thetas as starting points, then select an advanced optimization function from scipy.optimize.fmin_l_bfgs_b to help me minimize the cost function in order to train the Neural Network. This optimization procedures return the parameters Theta1 and Theta2, which can be applied in final prediction.
 
 
     input_layer_size = 48
@@ -210,6 +210,6 @@ After designed the Neural Network structure and the helper functions, let's cont
 
 ## Some thoughts
 Of course some parts of this prediction process can be optimized. For example, we split the training dataset into another validation dataset, execute the program multiple times with a list of different parameter lamda (lda) used for regularization to avoid overfitting, then select one which has the lowest value returned by the cost function.
-Due to the large computation going on under this process, it takes me around 20 minutes to get the final result. Therefore I ommit the step of selecting right lambda. 
+Due to the large computation going on under this process, it takes me around 20 minutes to get the final result. Therefore I omit the step of selecting right lambda. 
 
-I am glad that I can apply the concept of Neural Network to a real world problem. It is also the attractivenss of Machine Learnining. I will look into the advanced library to explore more about the Neural Network.       
+I am glad that I can apply the concept of Neural Network to a real world problem. It is also the attractiveness of Machine Learning. I will look into the advanced library to explore more about the Neural Network.       
