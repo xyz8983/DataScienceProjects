@@ -7,7 +7,7 @@ using the Ames Housing dataset which contains 79 variables for almost all aspect
 ## Glance at the data
 
 ### Step 1.
-Import libraries, load data, check the correlations between each variables.
+Import libraries, load data, check the correlations between each variable.
 
 
         import pandas as pd
@@ -30,7 +30,7 @@ Import libraries, load data, check the correlations between each variables.
 ## Cleaning and filling missing part
 
 ### Step 2. 
-Drop some useless variables. We can see that many variables like'OverallCond', 'BsmtHalfBath', etc. contribute little to the SalePrice variable, the final prediction goal of this project. Therefore I drop those variables. Some variables has high correlation with others, like 'GarageArea' with 'GarageCars'. After I examine the data_description.txt file for further variables explanation, I drop the correlated variables to avoid multicollinearity.
+Drop some useless variables. We can see that many variables like 'OverallCond', 'BsmtHalfBath', etc., contribute little to the SalePrice variable, the final prediction goal of this project. Therefore, I drop those variables. Some variables have high correlation with others, like 'GarageArea' with 'GarageCars'. After I examine the data_description.txt file for further variables explanation, I drop the correlated variables to avoid multicollinearity.
 
 
         training_label = training['SalePrice']
@@ -58,7 +58,7 @@ Check if there is any missing data
 
 
 ### Step 4. 
-Let's examine the train.csv data file and the data_description.txt which contains full description of each column, it is easily found out that some missing data "NA" does not really mean "missing", instead, they means "None". For example, "NA" in feature "Alley" just mean "No Alley Access". The "NA" of some features means 0 or "Other", while others I use the mean value or the most frequent value of that variable to fill the "NA". The variables "Alley", and "Fence" has over 80% missing value, and variable "FireplaceQu" has almost 50% of missing value. Based on the mean square error later on, deleting these three variables will improve the accuracy, therefore, I drop these three variables too.
+Let's examine the train.csv data file and the data_description.txt which contains full description of each column, it is easily found out that some missing data "NA" does not really mean "missing", instead, they means "None". For example, "NA" in feature "Alley" just mean "No Alley Access". Some features’ "NA" means 0 or "Other", while others I use the mean value or the most frequent value of that variable to fill the "NA". The variables "Alley", and "Fence" has over 80% missing value, and variable "FireplaceQu" has almost 50% of missing value. Based on the mean square error later on, deleting these three variables will improve the accuracy, therefore, I drop these three variables too.
 
 
         all_data_f_drop = ['Alley', 'Fence', 'FireplaceQu']
@@ -85,7 +85,7 @@ Let's examine the train.csv data file and the data_description.txt which contain
 
 
 ### Step 5. 
-Log transform some skewed numeric variables, dummy transform the category data, Then normalize some variables which contains large range to have 0 mean and 1 std. These steps are to help the linear regression model get a better performance.
+Log transform some skewed numeric variables, dummy transform the category data, then normalize some variables which contains large range to have 0 mean and 1 std. These steps are to help the linear regression model get a better performance.
 
         numeric_var = all_data.dtypes[all_data.dtypes != "object"].index
         skewed_var = training[numeric_var].apply(lambda x: skew(x.dropna())) #compute skewness
@@ -137,5 +137,8 @@ Predicting the sale price using the testing dataset
         testing_y.index += 1461
         testing_y.index.name = 'Id'
         testing_y.to_csv('salePrice_prediction_submission.csv', sep=',')
+        
+## Some thoughts
+Here I only tried basic linear regression model with regularization. Participants in Kaggle Community share some other techniques like Random Forest, and Gradient Boosting, also using PCA to avoid the multicollinearity, and fancy visualization to explore more about the data, like boxplot. I will try their methods and see how I can improve my version.
 
 
