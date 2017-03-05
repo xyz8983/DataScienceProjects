@@ -1,7 +1,7 @@
 ## Project Introduction
 I finished the Machine Learning course taught by Professor Andrew Ng on Coursera. Professor Ng explained how to write a backpropagation algorithm with logistic activation function to train the Neutral Network, and how to use forward propagation to perform the prediction. The original tutorial was on Matlab. I think it would be cool to rewritten it in Python. The [Digit Recognizer competition](https://www.kaggle.com/c/digit-recognizer) on Kaggle looks like a good project to me to practice what I have learned from the course. This project is to classify handwritten digits using the famous [MNIST](http://yann.lecun.com/exdb/mnist/index.html) data. 
 
-In general, I designed a simple Neural Network with one input layer, one hidden layer, and one output layer, with Sigmoid function as the activation function. I defined a cost function with gradient descent in feedforward propagation and backpropagation algorithm. Then I select advanced optimization function from scipy.optimize.fmin_l_bfgs_b to help me minimize the cost function in order to train the Neural Network. This optimization procedures return the parameters Theta, which can be applied in final prediction.
+In general, I designed a simple Neural Network with one input layer, one hidden layer, and one output layer, with Sigmoid function as the activation function. I defined a cost function with gradient descent in feedforward propagation and backpropagation algorithm. Then I select advanced optimization function from `scipy.optimize.fmin_l_bfgs_b` to help me minimize the cost function in order to train the Neural Network. This optimization procedures return the parameters Theta, which can be applied in final prediction.
 
 I know there are many advanced libraries now like TensorFlow, Keras, etc. that will make training Neural Network less painful. My goal here is to write down and practice what I have learned in the Machine Learning class, and understand what is the mathematical procedures behind the scene.
 
@@ -19,7 +19,7 @@ The data files are gray-scale images of hand-written digits from 0-9. Each image
     import matplotlib.pyplot as plt
 
 
-    #read training dataset and testing datast into panda dataframe
+    #read training dataset and testing dataset into panda data frame
     training_data_path = './input/train.csv'
     testing_data_path = './input/test.csv'
     training = pd.read_csv(training_data_path)   
@@ -55,7 +55,7 @@ I normalize the data in order to perform PCA to reduce the data dimension, since
     
 After PCA, the column number is reduced to 48. In this way I only have 48 units in the input layer instead of 784. I would like to explain more why this would make a huge difference in computation speed.
 
-### Step3. Design a Neural Network layout
+### Step 3. Design a Neural Network layout
 Here I use a simple Neural Network with only one hidden layer. The structure is like this:
 
 ![Neutral Network Layout](NeuralNetwork_Structure.jpg)
@@ -63,7 +63,7 @@ Here I use a simple Neural Network with only one hidden layer. The structure is 
 Each picture has totally 784 pixels, which is also the column number in the data files. After PCA (Principle Component Analysis), the dimension is reduced to 48. Therefore the input layer has 48 units. I designed 20 units in the hidden layer. The more unites in the hidden layer or the more hidden layer, the better for the algorithm performance, but also the more computational expensive. Since there are 0-9 totally 10 different digits for recognition, the output layer has 10 units.
 I will use feedforward propagation with logistic activation function for Neural Network to perform the prediction, and the backpropagation to train the Neural Network. Since the math formula does not look good in markdown file, I am not going to list them. 
 
-Suppose X is a row vector with 48 elements, representing one image. These 48 elements fit in the input layer. We need a type of calculation to get the value of each of the 20 units in the hidden layer based on the input value. Let's name it Theta1 for the parameter working on this procedure. Theta1 is a matrix with the shape 20*(48+1). Plus one here means adding a bias unit whose value is 1 to the X. 
+Suppose X is a row vector with 48 elements, representing one image. These 48 elements fit in the input layer. We need a type of calculation to get the value of each of the 20 units in the hidden layer based on the input value. Let's name it Theta1 for the parameter working on this procedure. Theta1 is a matrix with the shape 20*(48+1). Plus, one here means adding a bias unit whose value is 1 to the X. 
 
 There needs another parameter Theta2 to map the value of units in hidden layer to the output layer. Theta2 is a 10*(20+1) matrix. Plus one also means adding a bias unit whose value is 1 to the hidden layer units.
 
@@ -173,7 +173,7 @@ This function calculates the cost function for Neural Network.
         return p
     ```
 
-### Step 5. Train Neural Network
+### Step 4. Train Neural Network
 After designed the Neural Network structure and the helper functions, let's continue the prediction process. I initialize the Thetas as starting points, then select an advanced optimization function from scipy.optimize.fmin_l_bfgs_b to help me minimize the cost function in order to train the Neural Network. This optimization procedures return the parameters Theta1 and Theta2, which can be applied in final prediction.
 
 
@@ -197,7 +197,7 @@ After designed the Neural Network structure and the helper functions, let's cont
 
 
 
-### Step 6. Predicting the label for a handwritten digit image.
+### Step 5. Predicting the label for a handwritten digit image.
 
     predicted_label = predict(trained_theta1, trained_theta2, testing_data)
     print("prediction finished")
@@ -209,7 +209,7 @@ After designed the Neural Network structure and the helper functions, let's cont
 
 
 ## Some thoughts
-Of course some parts of this prediction process can be optimized. For example, we split the training dataset into another validation dataset, execute the program multiple times with a list of different parameter lamda (lda) used for regularization to avoid overfitting, then select one which has the lowest value returned by the cost function.
+Of course some parts of this prediction process can be optimized. For example, we split the training dataset into another validation dataset, execute the program multiple times with a list of different parameter lambda (lda) used for regularization to avoid overfitting, then select one which has the lowest value returned by the cost function.
 Due to the large computation going on under this process, it takes me around 20 minutes to get the final result. Therefore I omit the step of selecting right lambda. 
 
 I am glad that I can apply the concept of Neural Network to a real world problem. It is also the attractiveness of Machine Learning. I will look into the advanced library to explore more about the Neural Network.       
