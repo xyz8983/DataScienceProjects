@@ -47,7 +47,7 @@ Drop some useless variables. We can see that many variables like 'OverallCond', 
 
 Here I concatenate all training dataset and testing dataset, one reason is for better visualizing the data to get more information, the other is to make sure both the training dataset and testing dataset will get the same dimension after dummy transformation.
 
-### step 3. 
+### Step 3. 
 Check if there is any missing data
 
         number_missing = all_data.isnull().sum().sort_values(ascending=False)
