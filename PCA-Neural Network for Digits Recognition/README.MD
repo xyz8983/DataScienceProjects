@@ -55,7 +55,7 @@ I normalize the data in order to perform PCA to reduce the data dimension, since
     
 After PCA, the column number is reduced to 48. In this way I only have 48 units in the input layer instead of 784. I would like to explain more why this would make a huge difference in computation speed.
 
-### Step3. Design a Neural Network layout
+### Step 3. Design a Neural Network layout
 Here I use a simple Neural Network with only one hidden layer. The structure is like this:
 
 ![Neutral Network Layout](NeuralNetwork_Structure.jpg)
@@ -173,7 +173,7 @@ This function calculates the cost function for Neural Network.
         return p
     ```
 
-### Step 3. Train Neural Network
+### Step 4. Train Neural Network
 After designed the Neural Network structure and the helper functions, let's continue the prediction process. I initialize the Thetas as starting points, then select an advanced optimization function from scipy.optimize.fmin_l_bfgs_b to help me minimize the cost function in order to train the Neural Network. This optimization procedures return the parameters Theta1 and Theta2, which can be applied in final prediction.
 
 
@@ -197,7 +197,7 @@ After designed the Neural Network structure and the helper functions, let's cont
 
 
 
-### Step 4. Predicting the label for a handwritten digit image.
+### Step 5. Predicting the label for a handwritten digit image.
 
     predicted_label = predict(trained_theta1, trained_theta2, testing_data)
     print("prediction finished")
