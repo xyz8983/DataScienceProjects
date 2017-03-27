@@ -159,4 +159,4 @@ horizontal_bar(race_gender,'value','Race and Gender','Demographic: race and gend
 
 
 ## Some thoughts
-There are some fields that I have not fully utilized yet, such as the violation descriptions, which contains a short sentence about why the driver was given a ticket. It would be interesting to find out what is the most common reason of getting a ticket, will the most common reason differs between different genders. It requires the Natural Language Processing techniques. I would keep updating this article.
+There are some fields that I have not fully utilized yet, such as the violation descriptions, which contain a short sentence about why the driver was given a ticket. It would be interesting to find out what is the most common reason of getting a ticket, or will the most common reason differs among different genders. It requires the Natural Language Processing techniques. I would keep updating this article.
